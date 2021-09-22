@@ -11,6 +11,42 @@ The _SoftiCAR Gradle Plugins_ repository is a collection of Gradle plugins used 
 
 For Gradle multi-projects, a given plugin is either applied to the root project or to the subprojects individually.
 
+## Releasing and Publishing
+
+:warning: No artifacts of this repository have been published, yet. Thus, to employ these plugins, an organization has to build the artifacts itself and provide an internal server to share those artifacts. This will change when we finished our migration to github.
+
+### Build Properties
+
+To build and publish the artifacts of this repository internally, a file `~/.softicar/build.properties` has to be created, with the following properties:
+
+```
+# the URL and credentials for publishing the artifacts of this repository, e.g. SFTP access
+com.softicar.ivy.repository.upload.url = sftp://<host>:22/<path>/
+com.softicar.ivy.repository.upload.username = <username>
+com.softicar.ivy.repository.upload.password = <password>
+
+# the URL for other projects to retrive the artifacts, e.g. read-only HTTP access
+com.softicar.ivy.repository.url = http://<host>/<web-path>/
+```
+
+For very simple cases or for testing, a local folder can be used:
+```
+com.softicar.ivy.repository.upload.url = file:///some/folder/
+com.softicar.ivy.repository.url = file:///some/folder/
+```
+
+### Building
+
+To only build and publish an existing version internally, the following can be executed:
+```
+git checkout tags/<version>
+./gradlew clean build publish
+```
+
+### Releasing and Publishing
+
+:warning: The process how to release and publish new versions is currently changing while we are migrating to github.
+
 ## SoftiCAR Code Validation Plugin
 
 The _SoftiCAR Code Validation Plugin_ enables a project to execute self-contained code validation logic, i.e. code validation logic that is implemented in the project itself or in one of its dependencies.
