@@ -9,11 +9,9 @@ The _SoftiCAR Gradle Plugins_ repository is a collection of Gradle plugins used 
 * SoftiCAR Selenium Grid Plugin
 * SoftiCAR Test Logger Plugin
 
-## Individual Plugins
-
 For Gradle multi-projects, a given plugin is either applied to the root project or to the subprojects individually.
 
-### SoftiCAR Code Validation Plugin
+## SoftiCAR Code Validation Plugin
 
 The _SoftiCAR Code Validation Plugin_ enables a project to execute self-contained code validation logic, i.e. code validation logic that is implemented in the project itself or in one of its dependencies.
 
@@ -38,7 +36,7 @@ subprojects {
 }
 ```
 
-### SoftiCAR Dependency Validation Plugin
+## SoftiCAR Dependency Validation Plugin
 
 The _SoftiCAR Dependency Validation Plugin_ is useful to validate manual dependency conflict resolutions, e.g. by failing the build in case of accidential downgrades of dependencies. See the Javadoc of the plugin class for more details.
 
@@ -62,7 +60,7 @@ subprojects{
 }
 ```
 
-### SoftiCAR Ivy Publish Plugin
+## SoftiCAR Ivy Publish Plugin
 
 The _SoftiCAR Ivy Publish Plugin_ provides artifact publication support for Ivy repositories.
 
@@ -97,7 +95,7 @@ subprojects {
 }
 ```
 
-### SoftiCAR Java Library Plugin
+## SoftiCAR Java Library Plugin
 
 The _SoftiCAR Java Library Plugin_ applies the Gradle Java Library plug-in and applies some tweaks:
 * It configures the manifest of the generated jar-File.
@@ -115,7 +113,7 @@ subprojects {
 }
 ```
 
-### SoftiCAR Release Plugin
+## SoftiCAR Release Plugin
 
 The _SoftiCAR Release Plugin_ provides support for creating release tags and commits for a repository.
 
@@ -137,7 +135,7 @@ To create a release, execute this:
 ./gradlew release
 ```
 
-### SoftiCAR Selenium Grid Plugin
+## SoftiCAR Selenium Grid Plugin
 
 The _SoftiCAR Selenium Grid Plugin_ is useful for projects executing unit tests based on the [Selenium](https://www.selenium.dev/) framework. See the Javadoc of the plugin class for more details.
 
@@ -155,7 +153,7 @@ plugins {
 }
 ```
 
-### SoftiCAR Test Logger Plugin
+## SoftiCAR Test Logger Plugin
 
 The _SoftiCAR Test Logger Plugin_ can be used to debug problems (e.g. concerning performance or determinism) during test execution.
 
