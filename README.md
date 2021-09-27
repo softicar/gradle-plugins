@@ -3,7 +3,7 @@
 The _SoftiCAR Gradle Plugins_ repository is a collection of Gradle plugins used by many SoftiCAR Java projects. It comprises the following plugins:
 
 * SoftiCAR Code Validation Plugin
-* SoftiCAR Dependency Validation Publish Plugin
+* SoftiCAR Dependency Validation Plugin
 * SoftiCAR Ivy Publish Plugin
 * SoftiCAR Legacy Plugin
 * SoftiCAR Selenium Grid Plugin
@@ -13,7 +13,16 @@ For Gradle multi-projects, a given plugin is either applied to the root project 
 
 ## Releasing and Publishing
 
-:warning: No artifacts of this repository have been published, yet. Thus, to employ these plugins, an organization has to build the artifacts itself and provide an internal server to share those artifacts. This will change when we finished our migration to github.
+:warning: No artifacts of this repository have been published, yet. Thus, to employ these plugins, an organization has to build the artifacts itself and provide an internal server to share those artifacts. This will change when we finished our migration to github. Until then, the `plugins` sections in the examples below need to be replaced with the following:
+```
+buildscript {
+	repositories.ivy {
+		allowInsecureProtocol true // not necessary if using HTTPS
+		url http://<host>/<web-path>/
+	}
+	dependencies.classpath "com.softicar:com.softicar.gradle.plugin:<version>"
+}
+```
 
 ### Build Properties
 
@@ -35,7 +44,7 @@ com.softicar.ivy.repository.upload.url = file:///some/folder/
 com.softicar.ivy.repository.url = file:///some/folder/
 ```
 
-### Building
+### Building and Internal Publishing
 
 To only build and publish an existing version internally, the following can be executed:
 ```
@@ -53,7 +62,7 @@ The _SoftiCAR Code Validation Plugin_ enables a project to execute self-containe
 
 #### Usage
 
-For example, in the _build.gradle_ of the root project write this:
+For example, in the `build.gradle` of the root project write this:
 ```gradle
 plugins {
 	// the code validation plugin requires the java library plugin
