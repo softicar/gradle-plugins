@@ -1,6 +1,6 @@
 # SoftiCAR Gradle Plugins
 
-The _SoftiCAR Gradle Plugins_ repository is a collection of Gradle plugins used by many SoftiCAR Java projects. It comprises the following plugins:
+The _SoftiCAR Gradle Plugins_ repository is a collection of [Gradle](https://gradle.org/) plugins used by many SoftiCAR Java projects. It comprises the following plugins:
 
 * SoftiCAR Code Validation Plugin
 * SoftiCAR Dependency Validation Plugin
