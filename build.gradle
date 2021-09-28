@@ -1,0 +1,143 @@
+// -------------------- build script -------------------- //
+
+buildscript {
+	new File(System.properties['user.home'] + "/.softicar/build.properties").withReader { reader ->
+		new Properties().tap { load(reader) }.each { project.ext.set(it.key, it.value) }
+	}
+}
+
+// -------------------- plug-ins -------------------- //
+
+plugins {
+	id 'groovy'
+	id 'ivy-publish'
+	id 'java-gradle-plugin'
+	id 'net.researchgate.release' version '2.8.1'
+}
+
+gradlePlugin {
+	plugins {
+		softicarCodeValidationPlugin {
+			id = 'com.softicar.gradle.code.validation'
+			implementationClass = 'com.softicar.gradle.code.validation.plugin.SofticarCodeValidationPlugin'
+		}
+		softicarDependencyValidationPlugin {
+			id = 'com.softicar.gradle.dependency.validation'
+			implementationClass = 'com.softicar.gradle.dependency.validation.plugin.SofticarDependencyValidationPlugin'
+		}
+		softicarIvyPublishPlugin {
+			id = 'com.softicar.gradle.ivy.publish'
+			implementationClass = 'com.softicar.gradle.ivy.publish.plugin.SofticarIvyPublishPlugin'
+		}
+		softicarJavaLibraryPlugin {
+			id = 'com.softicar.gradle.java.library'
+			implementationClass = 'com.softicar.gradle.java.library.plugin.SofticarJavaLibraryPlugin'
+		}
+		softicarReleasePlugin {
+			id = 'com.softicar.gradle.release'
+			implementationClass = 'com.softicar.gradle.release.plugin.SofticarReleasePlugin'
+		}
+		softicarSeleniumGridPlugin {
+			id = 'com.softicar.gradle.selenium.grid'
+			implementationClass = 'com.softicar.gradle.selenium.grid.plugin.SofticarSeleniumGridPlugin'
+		}
+		softicarTestLoggerPlugin {
+			id = 'com.softicar.gradle.test.logger'
+			implementationClass = 'com.softicar.gradle.test.logger.plugin.SofticarTestLoggerPlugin'
+		}
+	}
+}
+
+// -------------------- dependencies -------------------- //
+
+repositories {
+	mavenCentral()
+	maven { url 'https://plugins.gradle.org/m2/' }
+}
+
+dependencies {
+	implementation gradleApi()
+	implementation localGroovy()
+
+	implementation "net.researchgate:gradle-release:2.8.1"
+	testImplementation "junit:junit:4.13.1"
+}
+
+task allDependencies(type: DependencyReportTask) {
+	// nothing
+}
+
+// -------------------- Eclipse -------------------- //
+
+// This provides the sources and Javadoc for the Gradle API.
+// https://stackoverflow.com/questions/22694199/gradle-api-sources-and-doc-when-writing-gradle-plugins
+plugins.withType(EclipsePlugin) {
+	plugins.withType(JavaBasePlugin) {
+		eclipse {
+			classpath {
+				file {
+					whenMerged { classpath ->
+						String gradleHome = gradle.getGradleHomeDir()
+							.absolutePath
+							.replace(File.separator, '/')
+						String gradleSourceDirectory = "${gradleHome}/src"
+						classpath.entries.each { entry ->
+							if (entry in org.gradle.plugins.ide.eclipse.model.AbstractLibrary
+									&& entry.library.path.contains('generated-gradle-jars')) {
+								entry.sourcePath =
+									new org.gradle.plugins.ide.eclipse.model.internal.FileReferenceFactory()
+										.fromPath(gradleSourceDirectory)
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// -------------------- compile -------------------- //
+
+sourceCompatibility = "15"
+targetCompatibility = "15"
+compileJava {
+	options.encoding = "UTF-8"
+}
+
+// -------------------- publish -------------------- //
+
+task([type: Jar, dependsOn: classes], "sourcesJar") {
+	from sourceSets.main.allSource
+	archiveClassifier = "sources"
+}
+
+if(project.hasProperty('com.softicar.ivy.repository.upload.url')) {
+	publishing {
+		repositories.ivy {
+			url project['com.softicar.ivy.repository.upload.url']
+	
+			if(project.hasProperty('com.softicar.ivy.repository.upload.username')) {
+				credentials {
+					username project['com.softicar.ivy.repository.upload.username']
+					password project['com.softicar.ivy.repository.upload.password']
+				}
+			}
+		}
+	
+		publications {
+			pluginIvy(IvyPublication) {
+				project.afterEvaluate {
+					configurations {
+						sources {}
+					}
+					artifact(project.sourcesJar) {
+						type = 'source'
+						conf = 'sources'
+					}
+				}
+			}
+		}
+	}
+	
+	afterReleaseBuild.dependsOn publish
+}
