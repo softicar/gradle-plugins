@@ -53,7 +53,7 @@ gradlePlugin {
 repositories {
 	if(project.hasProperty('com.softicar.maven.proxies')) {
 		for(proxy: project['com.softicar.maven.proxies'].split("\\s")) {
-			println "adding maven proxy $proxy"
+			println "Using Maven proxy: $proxy"
 			maven {
 				allowInsecureProtocol true
 				url proxy
