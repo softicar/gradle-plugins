@@ -51,8 +51,18 @@ gradlePlugin {
 // -------------------- dependencies -------------------- //
 
 repositories {
-	mavenCentral()
-	maven { url 'https://plugins.gradle.org/m2/' }
+	if(project.hasProperty('com.softicar.maven.proxies')) {
+		for(proxy: project['com.softicar.maven.proxies'].split("\\s")) {
+			println "Using Maven proxy: $proxy"
+			maven {
+				allowInsecureProtocol true
+				url proxy
+			}
+		}
+	} else {
+		mavenCentral()
+		maven { url 'https://plugins.gradle.org/m2/' }
+	}
 }
 
 dependencies {
