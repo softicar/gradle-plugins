@@ -2,7 +2,7 @@
 
 First of all, thank you for taking the time to contribute!
 
-## Bug Reports
+## Bug Report
 
 Before reporting a bug, please check that the bug was not reported before, by searching under [GitHub Issues](../../issues).
 
