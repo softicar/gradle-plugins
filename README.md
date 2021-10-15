@@ -11,6 +11,18 @@ The _SoftiCAR Gradle Plugins_ repository is a collection of [Gradle](https://gra
 
 For Gradle multi-projects, a given plugin is either applied to the root project or to the subprojects individually.
 
+## Building and Development
+
+To build this repository, a [JDK 15+](https://adoptopenjdk.net/) installation is required. Building is done using the [gradlew](https://docs.gradle.org/current/userguide/gradle_wrapper.html) command.
+
+```
+./gradlew clean build
+```
+
+For development, a recent [Eclipse IDE for Java Development](https://www.eclipse.org/downloads/packages/) is required. Clone the repository into the *Eclipse* workspace using the *Git* command line client and import it as *Existing Gradle Project*.
+
+Please read the [contribution guidelines](CONTRIBUTING.md) for this repository.
+
 ## Releasing and Publishing
 
 :warning: No artifacts of this repository have been published, yet. Thus, to employ these plugins, an organization has to build the artifacts itself and provide an internal server to share those artifacts. This will change when we finished our migration to github. Until then, the `plugins` sections in the examples below need to be replaced with the following:
