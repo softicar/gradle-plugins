@@ -15,7 +15,7 @@ Also describe what you expected in contrast to what actually happend. You can sk
 
 Before asking for new features, please check that the feature was not already requested before, by searching under [GitHub Issues](../../issues).
 
-To request new features or changes to existing features, create an issue in the form of a user story; specify who wants to do what and why?
+To request new features or changes to existing features, create an issue in the form of a user story, that is, specify who wants to do what and why?
 
 ## Pull Request
 
@@ -27,7 +27,7 @@ For pull requests referencing a [GitHub Issue](../../issues), the prefix shall b
 
 After the prefix, a short title shall be given in [title case](https://en.wikipedia.org/wiki/Title_case), e.g. `PLAT-123 Cool New Feature` or `i345 Fixed Login Bug`. We aim for a clean *Git* history that speaks for itself, and the commit titles shall be given with that in mind. Meaningless titles like `Updates` or `Changes` shall not be used.
 
-Furthermore, a pull request shall describe how the changes were validated, i.e. usually, a test plan shall be given. A test plan is not required for purely mechanical refactorings (e.g. automated renaming, moving, etc.) or changes to non-code files. For changes sufficiently covered by unit tests (or other automated tests), it suffices to refer to those tests, e.g. `Test Plan: see new unit tests`.
+Furthermore, a pull request shall describe how the changes were validated, i.e. a test plan shall be given. A test plan is not required for purely mechanical refactorings (e.g. automated renaming, moving, etc.) or changes to non-code files. For changes sufficiently covered by unit tests (or similar automated tests), it suffices to refer to those tests in the description, e.g. `Test Plan: see new unit tests`.
 
 ## Documentation
 
