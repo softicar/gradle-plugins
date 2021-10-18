@@ -8,7 +8,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '15'
+          java-version: '16'
           cache: 'gradle'
       - name: Checkout
         uses: actions/checkout@v2
