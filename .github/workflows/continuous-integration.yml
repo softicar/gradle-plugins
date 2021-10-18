@@ -4,6 +4,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: JDK Setup
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '15'
+          cache: 'gradle'
       - name: Checkout
         uses: actions/checkout@v2
       - name: Validate Gradle Wrapper
