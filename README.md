@@ -21,7 +21,7 @@ To build this repository, a [JDK 15+](https://adoptopenjdk.net/) installation is
 
 For development, a recent [Eclipse IDE for Java Development](https://www.eclipse.org/downloads/packages/) is required. Clone the repository into the *Eclipse* workspace using the *Git* command line client and import it as *Existing Gradle Project*.
 
-Please read the [contribution guidelines](CONTRIBUTING.md) for this repository.
+Please read the [contribution guidelines](CONTRIBUTING.md) for this repository and keep our [code of conduct](CODE_OF_CONDUCT.md) in mind.
 
 ## Releasing and Publishing
 
