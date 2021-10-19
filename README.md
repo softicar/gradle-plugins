@@ -1,3 +1,6 @@
+![GitHub](https://img.shields.io/github/license/Prevent-DEV/com.softicar.gradle.plugins)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/Prevent-DEV/com.softicar.gradle.plugins/Continuous%20Integration/main)
+
 # SoftiCAR Gradle Plugins
 
 The _SoftiCAR Gradle Plugins_ repository is a collection of [Gradle](https://gradle.org/) plugins used by many SoftiCAR Java projects. It comprises the following plugins:
