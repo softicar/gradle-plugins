@@ -18,8 +18,8 @@ jobs:
       - name: JDK Setup
         uses: actions/setup-java@v2
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: 'adopt'
+          java-version: '15'
           cache: 'gradle'
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@v1
