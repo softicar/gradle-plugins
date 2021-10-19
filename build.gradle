@@ -1,8 +1,11 @@
 // -------------------- build script -------------------- //
 
 buildscript {
-	new File(System.properties['user.home'] + "/.softicar/build.properties").withReader { reader ->
-		new Properties().tap { load(reader) }.each { project.ext.set(it.key, it.value) }
+	def buildProperties = new File(System.properties['user.home'] + "/.softicar/build.properties")
+	if(buildProperties.exists()) {
+		buildProperties.withReader { reader ->
+			new Properties().tap { load(reader) }.each { project.ext.set(it.key, it.value) }
+		}
 	}
 }
 
