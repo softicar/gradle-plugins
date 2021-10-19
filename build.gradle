@@ -3,7 +3,7 @@
 buildscript {
 	def buildProperties = new File(System.properties['user.home'] + "/.softicar/build.properties")
 	if(buildProperties.exists()) {
-		new File(System.properties['user.home'] + "/.softicar/build.properties").withReader { reader ->
+		buildProperties.withReader { reader ->
 			new Properties().tap { load(reader) }.each { project.ext.set(it.key, it.value) }
 		}
 	}
