@@ -2,7 +2,7 @@ name: Continuous Integration
 on: [push]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '16'
+          java-version: '17'
           cache: 'gradle'
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
