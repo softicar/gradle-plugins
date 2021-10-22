@@ -7,7 +7,7 @@ The _SoftiCAR Gradle Plugins_ repository is a collection of [Gradle](https://gra
 
 * SoftiCAR Code Validation Plugin
 * SoftiCAR Dependency Validation Plugin
-* SoftiCAR Legacy Plugin
+* SoftiCAR Java Library Plugin
 * SoftiCAR Selenium Grid Plugin
 * SoftiCAR Test Logger Plugin
 
