@@ -13,7 +13,7 @@ The _SoftiCAR Gradle Plugins_ repository is a collection of [Gradle](https://gra
 
 For Gradle multi-projects, a given plugin is either applied to the root project or to the subprojects individually.
 
-## Building and Development
+## 1 Building and Development
 
 To build this repository, a [JDK 15+](https://adoptopenjdk.net/) installation is required. Building is done using the [gradlew](https://docs.gradle.org/current/userguide/gradle_wrapper.html) command.
 
@@ -25,11 +25,11 @@ For development, a recent [Eclipse IDE for Java Development](https://www.eclipse
 
 Please read the [contribution guidelines](CONTRIBUTING.md) for this repository and keep our [code of conduct](CODE_OF_CONDUCT.md) in mind.
 
-## SoftiCAR Code Validation Plugin
+## 2 SoftiCAR Code Validation Plugin
 
 This plugin enables a project to execute self-contained code validation logic, i.e. code validation logic that is implemented in the project itself or in one of its dependencies.
 
-#### Usage
+**Usage**
 
 For example, in the `build.gradle` of the root project write this:
 ```gradle
@@ -50,11 +50,11 @@ subprojects {
 }
 ```
 
-## SoftiCAR Dependency Validation Plugin
+## 3 SoftiCAR Dependency Validation Plugin
 
 This plugin is useful to validate manual dependency conflict resolutions, e.g. by failing the build in case of accidential downgrades of dependencies. See the Javadoc of the plugin class for more details.
 
-#### Usage
+**Usage**
 
 For example, in the _build.gradle_ of the root project write this:
 ```gradle
@@ -74,13 +74,13 @@ subprojects{
 }
 ```
 
-## SoftiCAR Java Library Plugin
+## 4 SoftiCAR Java Library Plugin
 
 This plugin applies the Gradle Java Library plug-in and applies some tweaks.
 * It configures the manifest of the generated jar-File.
 * It silences some Javadoc compiler diagnostics.
 
-#### Usage
+**Usage**
 
 For example, in the _build.gradle_ of the root project write this:
 ```gradle
@@ -92,11 +92,11 @@ subprojects {
 }
 ```
 
-## SoftiCAR Selenium Grid Plugin
+## 5 SoftiCAR Selenium Grid Plugin
 
 This plugin is useful for projects executing unit tests based on the [Selenium](https://www.selenium.dev/) framework. See the Javadoc of the plugin class for more details.
 
-#### Usage
+**Usage**
 
 To use this plugin, the Gradle daemon must be disabled, e.g. in _gradle.properties_:
 ```
@@ -110,11 +110,11 @@ plugins {
 }
 ```
 
-## SoftiCAR Test Logger Plugin
+## 6 SoftiCAR Test Logger Plugin
 
 This plugin can be used to debug problems (e.g. concerning performance or determinism) during test execution.
 
-#### Usage
+**Usage**
 
 For example, in the _build.gradle_ of the root project write this:
 ```gradle
