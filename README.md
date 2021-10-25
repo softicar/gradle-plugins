@@ -23,7 +23,7 @@ To build this repository, a [JDK 15+](https://adoptopenjdk.net/) installation is
 
 For development, a recent [Eclipse IDE for Java Development](https://www.eclipse.org/downloads/packages/) is required. Clone the repository into the *Eclipse* workspace using the *Git* command line client and import it as *Existing Gradle Project*.
 
-To publish this Gradle plug-in to a local repository for testing purposes, manipulate build files as follows:
+To publish this Gradle plug-in to a local repository for testing purposes, manipulate the build files as follows:
 
 1. Modify `com.softicar.gradle.plugins/build.gradle` as follows:
    1. Add the `maven-publish` plugin:
