@@ -28,7 +28,7 @@ If you're working on a [GitHub Issue](../../issues) no prefix is necessary.
 
 ### 2. Description
 
-If the pull request is linked to a [GitHub Issue](../../issues) the issue should be referenced in the description using a '#', e.g. `#123`.
+If the pull request resolves or addresses a [GitHub Issue](../../issues), the issue shall be referenced in the description using a '#', e.g. `#123`.
 
 Furthermore, a pull request shall describe how the changes were validated, e.g. a test plan shall be given.
 - A test plan is not required for purely mechanical refactorings (e.g. renaming, moving, etc. by the IDE), as well as changes to documentation.
