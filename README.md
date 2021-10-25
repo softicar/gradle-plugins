@@ -25,7 +25,7 @@ For development, a recent [Eclipse IDE for Java Development](https://www.eclipse
 
 To publish this Gradle plug-in to a local repository for testing purposes, manipulate the build files as follows:
 
-1. Modify `com.softicar.gradle.plugins/build.gradle` as follows:
+1. Modify the `build.gradle` of the root project as follows:
    1. Add the `maven-publish` plugin:
 
           plugins {
