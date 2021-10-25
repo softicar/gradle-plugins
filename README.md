@@ -23,6 +23,60 @@ To build this repository, a [JDK 15+](https://adoptopenjdk.net/) installation is
 
 For development, a recent [Eclipse IDE for Java Development](https://www.eclipse.org/downloads/packages/) is required. Clone the repository into the *Eclipse* workspace using the *Git* command line client and import it as *Existing Gradle Project*.
 
+To publish this Gradle plug-in to a local repository for testing purposes, manipulate the build files as follows:
+
+1. Modify the `build.gradle` of the root project as follows:
+   1. Add the `maven-publish` plugin:
+
+          plugins {
+            id 'maven-publish'
+          }
+
+   1. Define a local Maven repository:
+
+          publishing {
+            repositories {
+              maven {
+                name = 'localPluginRepository'
+                url = System.properties['user.home'] + '/local-plugin-repository'
+              }
+            }
+          }
+
+   1. Run:
+
+          ./gradlew clean publish
+
+1. Choose another project to build with the locally-released plugin, modify its `build.gradle` and `settings.gradle` files, and build it:
+
+   1. In `build.gradle`, add distinct plugins as described in the sections below, e.g.:
+
+          plugins {
+            id 'com.softicar.gradle.java.library' version '5.0.0'
+            id 'com.softicar.gradle.code.validation' version '5.0.0' apply false
+          }
+          
+          subprojects {
+            apply plugin: 'com.softicar.gradle.code.validation'
+          }
+
+   1. At the very top of `settings.gradle`, add:
+
+          pluginManagement {
+            repositories {
+              maven {
+                url System.properties['user.home'] + '/local-plugin-repository'
+              }
+              gradlePluginPortal()
+            }
+          }
+
+   1. Run:
+
+          ./gradlew clean build
+
+1. When you're done testing, revert the above manipulations. Make sure to _not_ add them to a PR.
+
 Please read the [contribution guidelines](CONTRIBUTING.md) for this repository and keep our [code of conduct](CODE_OF_CONDUCT.md) in mind.
 
 ## 2 SoftiCAR Code Validation Plugin
