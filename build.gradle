@@ -1,51 +1,41 @@
-// -------------------- build script -------------------- //
-
-buildscript {
-	def buildProperties = new File(System.properties['user.home'] + "/.softicar/build.properties")
-	if(buildProperties.exists()) {
-		buildProperties.withReader { reader ->
-			new Properties().tap { load(reader) }.each { project.ext.set(it.key, it.value) }
-		}
-	}
-}
-
 // -------------------- plug-ins -------------------- //
 
 plugins {
 	id 'groovy'
-	id 'ivy-publish'
 	id 'java-gradle-plugin'
-	id 'net.researchgate.release' version '2.8.1'
+	id 'com.gradle.plugin-publish' version '0.16.0'
 }
 
 gradlePlugin {
 	plugins {
 		softicarCodeValidationPlugin {
 			id = 'com.softicar.gradle.code.validation'
+			displayName = 'SoftiCAR Code Validation Plugin'
+			description = 'This plugin enables a project to execute self-contained code validation logic, i.e. code validation logic that is implemented in the project itself or in one of its dependencies.'
 			implementationClass = 'com.softicar.gradle.code.validation.plugin.SofticarCodeValidationPlugin'
 		}
 		softicarDependencyValidationPlugin {
 			id = 'com.softicar.gradle.dependency.validation'
+			displayName = 'SoftiCAR Dependency Validation Plugin'
+			description = 'This plugin is useful to validate manual dependency conflict resolutions, e.g. by failing the build in case of accidential downgrades of dependencies. See the Javadoc of the plugin class for more details.'
 			implementationClass = 'com.softicar.gradle.dependency.validation.plugin.SofticarDependencyValidationPlugin'
-		}
-		softicarIvyPublishPlugin {
-			id = 'com.softicar.gradle.ivy.publish'
-			implementationClass = 'com.softicar.gradle.ivy.publish.plugin.SofticarIvyPublishPlugin'
 		}
 		softicarJavaLibraryPlugin {
 			id = 'com.softicar.gradle.java.library'
+			displayName = 'SoftiCAR Java Library Plugin'
+			description = 'This plugin applies the Gradle Java Library plug-in and applies some tweaks.'
 			implementationClass = 'com.softicar.gradle.java.library.plugin.SofticarJavaLibraryPlugin'
-		}
-		softicarReleasePlugin {
-			id = 'com.softicar.gradle.release'
-			implementationClass = 'com.softicar.gradle.release.plugin.SofticarReleasePlugin'
 		}
 		softicarSeleniumGridPlugin {
 			id = 'com.softicar.gradle.selenium.grid'
+			displayName = 'SoftiCAR Selenium Grid Plugin'
+			description = 'This plugin is useful for projects executing unit tests based on the Selenium (https://www.selenium.dev/) framework. See the Javadoc of the plugin class for more details.'
 			implementationClass = 'com.softicar.gradle.selenium.grid.plugin.SofticarSeleniumGridPlugin'
 		}
 		softicarTestLoggerPlugin {
 			id = 'com.softicar.gradle.test.logger'
+			displayName = 'SoftiCAR Test Logger Plugin'
+			description = 'This plugin can be used to debug problems (e.g. concerning performance or determinism) during test execution.'
 			implementationClass = 'com.softicar.gradle.test.logger.plugin.SofticarTestLoggerPlugin'
 		}
 	}
@@ -72,7 +62,6 @@ dependencies {
 	implementation gradleApi()
 	implementation localGroovy()
 
-	implementation "net.researchgate:gradle-release:2.8.1"
 	testImplementation "junit:junit:4.13.1"
 }
 
@@ -124,33 +113,13 @@ task([type: Jar, dependsOn: classes], "sourcesJar") {
 	archiveClassifier = "sources"
 }
 
-if(project.hasProperty('com.softicar.ivy.repository.upload.url')) {
-	publishing {
-		repositories.ivy {
-			url project['com.softicar.ivy.repository.upload.url']
-	
-			if(project.hasProperty('com.softicar.ivy.repository.upload.username')) {
-				credentials {
-					username project['com.softicar.ivy.repository.upload.username']
-					password project['com.softicar.ivy.repository.upload.password']
-				}
-			}
-		}
-	
-		publications {
-			pluginIvy(IvyPublication) {
-				project.afterEvaluate {
-					configurations {
-						sources {}
-					}
-					artifact(project.sourcesJar) {
-						type = 'source'
-						conf = 'sources'
-					}
-				}
-			}
-		}
-	}
-	
-	afterReleaseBuild.dependsOn publish
+task([type: Jar, dependsOn: javadoc], "javadocJar") {
+	from javadoc.destinationDir
+	archiveClassifier = "javadoc"
+}
+
+pluginBundle {
+	website = 'https://github.com/Prevent-DEV/com.softicar.gradle.plugins'
+	vcsUrl = 'https://github.com/Prevent-DEV/com.softicar.gradle.plugins'
+	tags = ['dependencies', 'java', 'logging', 'selenium', 'softicar', 'validation']
 }
