@@ -18,15 +18,18 @@ To request new features or changes to existing features, create an issue in the 
 
 ## Pull Request
 
-Every pull request shall refer to an issue. The issue number shall be given as a prefix to the title.
+### 1. Title
 
-We currently use [JIRA](https://www.atlassian.com/software/jira) for internally issue management. The prefix `PLAT-` plus the respective issue number shall be used, e.g. `PLAT-123`, `PLAT-345`. 
+We currently use [JIRA](https://www.atlassian.com/software/jira) for internal issue management. The prefix `PLAT-` plus the respective issue number shall be given as a prefix to the title, e.g. `PLAT-123`, `PLAT-345`. 
 
-For pull requests referencing a [GitHub Issue](../../issues), the prefix shall be `i` plus the respective issue number, e.g. `i123`, `i345`.
+After the prefix a short title shall be given in [Title Case](https://en.wikipedia.org/wiki/Title_case), e.g. `PLAT-123 Cool New Feature`. We aim for a clean *Git* history that speaks for itself and the commit titles shall be worded with that in mind. Meaningless titles like `Updates` or `Changes` shall not be used.
 
-After the prefix, a short title shall be given in [Title Case](https://en.wikipedia.org/wiki/Title_case), e.g. `PLAT-123 Cool New Feature` or `i345 Fixed Login Bug`. We aim for a clean *Git* history that speaks for itself, and the commit titles shall be worded with that in mind. Meaningless titles like `Updates` or `Changes` shall not be used.
+If you're working on a [GitHub Issue](../../issues) no prefix is necessary.
 
-If the pull request references a [GitHub Issue](../../issues), the issue should also be referenced in the description using a '#', e.g. `#123`.
+### 2. Description
+
+If the pull request resolves or addresses a [GitHub Issue](../../issues), the issue shall be referenced in the description using a '#', e.g. `#123`.
+
 Furthermore, a pull request shall describe how the changes were validated, e.g. a test plan shall be given.
 - A test plan is not required for purely mechanical refactorings (e.g. renaming, moving, etc. by the IDE), as well as changes to documentation.
 - For changes to code that is sufficiently covered by unit tests (or similar automated tests), it suffices to refer to those tests in the description, e.g. `validation: see new unit tests`.
