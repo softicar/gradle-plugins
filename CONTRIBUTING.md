@@ -10,6 +10,8 @@ When filing a bug report, try to describe the easiest way to reproduce the probl
 
 Also, describe the expected behavior in contrast to the observed behavior. You can skip that if this contrast is obvious.
 
+Of course, you can always try to fix the bug yourself if you want to.
+
 ## Feature Request
 
 Before asking for new features, please check that the feature was **not** already requested before, by searching under [GitHub Issues](../../issues).
