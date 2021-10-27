@@ -26,12 +26,6 @@ For development, a recent [Eclipse IDE for Java Development](https://www.eclipse
 To publish this Gradle plug-in to a local repository for testing purposes, manipulate the build files as follows:
 
 1. Modify the `build.gradle` of the root project as follows:
-   1. Add the `maven-publish` plugin:
-
-          plugins {
-            id 'maven-publish'
-          }
-
    1. Define a local Maven repository:
 
           publishing {
@@ -45,15 +39,15 @@ To publish this Gradle plug-in to a local repository for testing purposes, manip
 
    1. Run:
 
-          ./gradlew clean publish
+          ./gradlew clean publish -Pversion=X.Y.Z
 
 1. Choose another project to build with the locally-released plugin, modify its `build.gradle` and `settings.gradle` files, and build it:
 
    1. In `build.gradle`, add distinct plugins as described in the sections below, e.g.:
 
           plugins {
-            id 'com.softicar.gradle.java.library' version '5.0.0'
-            id 'com.softicar.gradle.code.validation' version '5.0.0' apply false
+            id 'com.softicar.gradle.java.library' version 'X.Y.Z'
+            id 'com.softicar.gradle.code.validation' version 'X.Y.Z' apply false
           }
           
           subprojects {
