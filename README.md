@@ -3,7 +3,7 @@
 
 # SoftiCAR Gradle Plugins
 
-The _SoftiCAR Gradle Plugins_ repository is a collection of [Gradle](https://gradle.org/) plugins used by many SoftiCAR Java projects. It comprises the following plugins:
+This repository provides a collection of [Gradle](https://gradle.org/) plugins that are used by various SoftiCAR Java projects. It comprises the following plugins:
 
 * SoftiCAR Code Validation Plugin
 * SoftiCAR Dependency Validation Plugin
@@ -73,7 +73,11 @@ To publish this Gradle plug-in to a local repository for testing purposes, manip
 
 Please read the [contribution guidelines](CONTRIBUTING.md) for this repository and keep our [code of conduct](CODE_OF_CONDUCT.md) in mind.
 
-## 2 SoftiCAR Code Validation Plugin
+## 2 Plugins
+
+This repository provides the following plugins:
+
+### 2.1 SoftiCAR Code Validation Plugin
 
 This plugin enables a project to execute self-contained code validation logic, i.e. code validation logic that is implemented in the project itself or in one of its dependencies.
 
@@ -98,7 +102,7 @@ subprojects {
 }
 ```
 
-## 3 SoftiCAR Dependency Validation Plugin
+### 2.2 SoftiCAR Dependency Validation Plugin
 
 This plugin is useful to validate manual dependency conflict resolutions, e.g. by failing the build in case of accidential downgrades of dependencies. See the Javadoc of the plugin class for more details.
 
@@ -122,7 +126,7 @@ subprojects{
 }
 ```
 
-## 4 SoftiCAR Java Library Plugin
+### 2.3 SoftiCAR Java Library Plugin
 
 This plugin applies the Gradle Java Library plug-in and applies some tweaks.
 * It configures the manifest of the generated jar-File.
@@ -140,7 +144,7 @@ subprojects {
 }
 ```
 
-## 5 SoftiCAR Selenium Grid Plugin
+### 2.4 SoftiCAR Selenium Grid Plugin
 
 This plugin is useful for projects executing unit tests based on the [Selenium](https://www.selenium.dev/) framework. See the Javadoc of the plugin class for more details.
 
@@ -158,7 +162,7 @@ plugins {
 }
 ```
 
-## 6 SoftiCAR Test Logger Plugin
+### 2.5 SoftiCAR Test Logger Plugin
 
 This plugin can be used to debug problems (e.g. concerning performance or determinism) during test execution.
 
