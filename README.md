@@ -1,5 +1,5 @@
-![GitHub](https://img.shields.io/github/license/Prevent-DEV/com.softicar.gradle.plugins)
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/Prevent-DEV/com.softicar.gradle.plugins/Continuous%20Integration/main)
+![GitHub](https://img.shields.io/github/license/SoftiCAR/com.softicar.gradle.plugins)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/SoftiCAR/com.softicar.gradle.plugins/Continuous%20Integration/main)
 
 # SoftiCAR Gradle Plugins
 
