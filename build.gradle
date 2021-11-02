@@ -120,7 +120,7 @@ task([type: Jar, dependsOn: javadoc], "javadocJar") {
 }
 
 pluginBundle {
-	website = 'https://github.com/SoftiCAR/com.softicar.gradle.plugins'
-	vcsUrl = 'https://github.com/SoftiCAR/com.softicar.gradle.plugins'
+	website = 'https://github.com/softicar/gradle-plugins'
+	vcsUrl = 'https://github.com/softicar/gradle-plugins'
 	tags = ['dependencies', 'java', 'logging', 'selenium', 'softicar', 'validation']
 }
