@@ -129,7 +129,7 @@ And then execute _Gradle_ with the following parameter:
 
 ## 2 Releases and Versioning
 
-Version numbers of _SoftiCAR Platform_ releases follow the [Semantic Versioning](https://semver.org/) principle.
+Releases of this project follow the [Semantic Versioning](https://semver.org/) principle.
 
 ```
      1.2.3
