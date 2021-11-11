@@ -129,7 +129,7 @@ And then execute _Gradle_ with the following parameter:
 
 ## 2 Releases and Versioning
 
-Releases of this project follow the [Semantic Versioning](https://semver.org/) principle.
+Releases of this repository follow the [Semantic Versioning](https://semver.org/) principle.
 
 ```
      1.2.3
