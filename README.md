@@ -205,5 +205,6 @@ To publish this Gradle plug-in to a local repository for testing purposes, manip
 
 1. When you're done testing, revert the above manipulations. Make sure to _not_ add them to a PR.
 
-Please read the [contribution guidelines](CONTRIBUTING.md) for this repository and keep our [code of conduct](CODE_OF_CONDUCT.md) in mind.
+## 4 Contributing
 
+Please read the [contribution guidelines](CONTRIBUTING.md) for this repository and keep our [code of conduct](CODE_OF_CONDUCT.md) in mind.
