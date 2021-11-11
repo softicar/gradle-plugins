@@ -127,7 +127,27 @@ And then execute _Gradle_ with the following parameter:
 ./gradlew -Pcom.softicar.test.logger.enabled=true check
 ```
 
-## 2 Building and Development
+## 2 Releases and Versioning
+
+Version numbers of _SoftiCAR Platform_ releases follow the [Semantic Versioning](https://semver.org/) principle.
+
+```
+     1.2.3
+    /  |  \
+major  |  patch
+     minor
+```
+
+1. If there was an **API break** since the previous release, the **major version** is incremented: `1.2.3 -> 2.0.0` -- API breaks include:
+   - Incompatible changes to existing Java code which is part of the API; most notably: changes to (or removal of) `public`/`protected` classes/fields/methods/signatures
+   - Changes in the behavior of existing Java code (except fixes of defective behavior)
+   - _Any_ change to a database table
+   - Fundamental changes to the behavior or style of the UI
+1. If there was **no API break** but a **new feature** was added, the **minor version** is incremented: `1.2.3 -> 1.3.0`
+1. If there was **no API break** and **no new feature** was added, the **patch version** is incremented: `1.2.3 -> 1.2.4`
+   - e.g. when _only_ defects were fixed
+
+## 3 Building and Development
 
 To build this repository, a [JDK 15+](https://adoptopenjdk.net/) installation is required. Building is done using the [gradlew](https://docs.gradle.org/current/userguide/gradle_wrapper.html) command.
 
@@ -186,3 +206,4 @@ To publish this Gradle plug-in to a local repository for testing purposes, manip
 1. When you're done testing, revert the above manipulations. Make sure to _not_ add them to a PR.
 
 Please read the [contribution guidelines](CONTRIBUTING.md) for this repository and keep our [code of conduct](CODE_OF_CONDUCT.md) in mind.
+
