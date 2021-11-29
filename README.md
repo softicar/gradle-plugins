@@ -160,11 +160,11 @@ To publish this Gradle plug-in to a local repository for testing purposes, manip
               }
           }
 
-   2. Run:
+   1. Run:
 
           ./gradlew clean publish -Pversion=X.Y.Z
 
-2. Choose another project to build with the locally-released plugin, modify its `build.gradle` and `settings.gradle` files, and build it:
+1. Choose another project to build with the locally-released plugin, modify its `build.gradle` and `settings.gradle` files, and build it:
 
    1. In `build.gradle`, add distinct plugins as described in the sections below, e.g.:
 
@@ -177,7 +177,7 @@ To publish this Gradle plug-in to a local repository for testing purposes, manip
                apply plugin: 'com.softicar.gradle.code.validation'
           }
 
-   2. At the very top of `settings.gradle`, add:
+   1. At the very top of `settings.gradle`, add:
 
           pluginManagement {
               repositories {
@@ -188,11 +188,11 @@ To publish this Gradle plug-in to a local repository for testing purposes, manip
               }
           }
 
-   3. Run:
+   1. Run:
 
           ./gradlew clean build
 
-3. When you're done testing, revert the above manipulations. Make sure to _not_ add them to a PR.
+1. When you're done testing, revert the above manipulations. Make sure to _not_ add them to a PR.
 
 ## 3 Releases and Versioning
 
@@ -210,8 +210,8 @@ major  |  patch
    - Changes in the behavior of existing Java code (except fixes of defective behavior)
    - *Any* change to a database table
    - Fundamental changes to the behavior or style of the UI
-2. If there was **no API break** but a **new feature** was added, the **minor version** is incremented: `1.2.3 -> 1.3.0`
-3. If there was **no API break** and **no new feature** was added, the **patch version** is incremented: `1.2.3 -> 1.2.4`
+1. If there was **no API break** but a **new feature** was added, the **minor version** is incremented: `1.2.3 -> 1.3.0`
+1. If there was **no API break** and **no new feature** was added, the **patch version** is incremented: `1.2.3 -> 1.2.4`
    - e.g. when *only* defects were fixed
 
 ## 4 Contributing
