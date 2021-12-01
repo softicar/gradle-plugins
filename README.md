@@ -15,7 +15,9 @@ For Gradle multi-projects, a given plugin is either applied to the root project 
 
 ## 1 Plugins
 
-This repository provides the following plugins:
+This repository provides the plugins described below.
+
+In the examples, replace `X.Y.Z` with a [release](../../releases) version number.
 
 ### 1.1 SoftiCAR Code Validation Plugin
 
@@ -28,9 +30,9 @@ For example, in the `build.gradle` of the root project write this:
 ```gradle
 plugins {
     // the code validation plugin requires the java library plugin
-    id 'com.softicar.gradle.java.library'
+    id 'com.softicar.gradle.java.library' version 'X.Y.Z'
     // we usually don't want to apply the plugin to the root project (apply false)
-    id 'com.softicar.gradle.code.validation' apply false
+    id 'com.softicar.gradle.code.validation' version 'X.Y.Z' apply false
 }
 subprojects {
     apply plugin: 'com.softicar.gradle.java.library'
@@ -54,7 +56,7 @@ For example, in the _build.gradle_ of the root project write this:
 ```gradle
 plugins {
     // we usually don't want to apply the plugin to the root project (apply false)
-    id 'com.softicar.gradle.dependency.validation' apply false
+    id 'com.softicar.gradle.dependency.validation' version 'X.Y.Z' apply false
 }
 subprojects{
     configurations.all {
@@ -81,7 +83,7 @@ For example, in the _build.gradle_ of the root project write this:
 
 ```gradle
 plugins {
-    id 'com.softicar.gradle.java.library'
+    id 'com.softicar.gradle.java.library' version 'X.Y.Z'
 }
 subprojects {
     apply plugin: 'com.softicar.gradle.java.library'
@@ -104,7 +106,7 @@ This plugin is applied to the root project directly, e.g. in _build.gradle_:
 
 ```gradle
 plugins {
-    id 'com.softicar.gradle.selenium.grid'
+    id 'com.softicar.gradle.selenium.grid' version 'X.Y.Z'
 }
 ```
 
@@ -119,9 +121,9 @@ For example, in the _build.gradle_ of the root project write this:
 ```gradle
 plugins {
     // the Java plug-in provides the `test` task that the plugin binds to
-    id 'com.softicar.gradle.java.library'
+    id 'com.softicar.gradle.java.library' version 'X.Y.Z'
     // we usually don't want to apply the plugin to the root project (apply false)
-    id 'com.softicar.gradle.test.logger' apply false
+    id 'com.softicar.gradle.test.logger' version 'X.Y.Z' apply false
 }
 subprojects {
     apply plugin: 'com.softicar.gradle.java.library'
