@@ -134,7 +134,7 @@ subprojects {
 And then execute _Gradle_ with the following parameter:
 
 ```
-./gradlew -Pcom.softicar.test.logger.enabled=true check
+./gradlew -Pcom.softicar.test.logger.verbose=true check
 ```
 
 ## 2 Building and Development
