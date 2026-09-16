@@ -139,7 +139,7 @@ And then execute _Gradle_ with the following parameter:
 
 ## 2 Building and Development
 
-To build this repository, a [JDK 15+](https://adoptopenjdk.net/) installation is required. Building is done using the [gradlew](https://docs.gradle.org/current/userguide/gradle_wrapper.html) command.
+To build this repository, a [JDK 21+](https://adoptopenjdk.net/) installation is required. Building is done using the [gradlew](https://docs.gradle.org/current/userguide/gradle_wrapper.html) command.
 
 ```
 ./gradlew clean build

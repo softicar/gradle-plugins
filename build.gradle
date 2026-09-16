@@ -4,40 +4,48 @@ plugins {
 	id 'groovy'
 	id 'java-gradle-plugin'
 	id 'maven-publish'
-	id 'com.gradle.plugin-publish' version '0.16.0'
+	id 'com.gradle.plugin-publish' version '2.2.1'
 }
 
 gradlePlugin {
+	website = 'https://github.com/softicar/gradle-plugins'
+    vcsUrl = 'https://github.com/softicar/gradle-plugins'
+	
 	plugins {
 		softicarCodeValidationPlugin {
 			id = 'com.softicar.gradle.code.validation'
 			displayName = 'SoftiCAR Code Validation Plugin'
 			description = 'This plugin enables a project to execute self-contained code validation logic, i.e. code validation logic that is implemented in the project itself or in one of its dependencies.'
 			implementationClass = 'com.softicar.gradle.code.validation.plugin.SofticarCodeValidationPlugin'
+			tags.set(['validation', 'softicar'])
 		}
 		softicarDependencyValidationPlugin {
 			id = 'com.softicar.gradle.dependency.validation'
 			displayName = 'SoftiCAR Dependency Validation Plugin'
 			description = 'This plugin is useful to validate manual dependency conflict resolutions, e.g. by failing the build in case of accidential downgrades of dependencies. See the Javadoc of the plugin class for more details.'
 			implementationClass = 'com.softicar.gradle.dependency.validation.plugin.SofticarDependencyValidationPlugin'
+			tags.set(['dependencies', 'validation', 'softicar'])
 		}
 		softicarJavaLibraryPlugin {
 			id = 'com.softicar.gradle.java.library'
 			displayName = 'SoftiCAR Java Library Plugin'
 			description = 'This plugin applies the Gradle Java Library plug-in and applies some tweaks.'
 			implementationClass = 'com.softicar.gradle.java.library.plugin.SofticarJavaLibraryPlugin'
+			tags.set(['java', 'softicar'])
 		}
 		softicarSeleniumGridPlugin {
 			id = 'com.softicar.gradle.selenium.grid'
 			displayName = 'SoftiCAR Selenium Grid Plugin'
 			description = 'This plugin is useful for projects executing unit tests based on the Selenium (https://www.selenium.dev/) framework. See the Javadoc of the plugin class for more details.'
 			implementationClass = 'com.softicar.gradle.selenium.grid.plugin.SofticarSeleniumGridPlugin'
+			tags.set(['selenium', 'softicar'])
 		}
 		softicarTestLoggerPlugin {
 			id = 'com.softicar.gradle.test.logger'
 			displayName = 'SoftiCAR Test Logger Plugin'
 			description = 'This plugin can be used to debug problems (e.g. concerning performance or determinism) during test execution.'
 			implementationClass = 'com.softicar.gradle.test.logger.plugin.SofticarTestLoggerPlugin'
+			tags.set(['logging', 'softicar'])
 		}
 	}
 }
@@ -63,7 +71,7 @@ dependencies {
 	implementation gradleApi()
 	implementation localGroovy()
 
-	testImplementation "junit:junit:4.13.1"
+	testImplementation "junit:junit:4.13.2"
 }
 
 task allDependencies(type: DependencyReportTask) {
@@ -100,9 +108,11 @@ plugins.withType(EclipsePlugin) {
 }
 
 // -------------------- compile -------------------- //
+java {
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
 
-sourceCompatibility = "15"
-targetCompatibility = "15"
 compileJava {
 	options.encoding = "UTF-8"
 }
@@ -119,8 +129,3 @@ task([type: Jar, dependsOn: javadoc], "javadocJar") {
 	archiveClassifier = "javadoc"
 }
 
-pluginBundle {
-	website = 'https://github.com/softicar/gradle-plugins'
-	vcsUrl = 'https://github.com/softicar/gradle-plugins'
-	tags = ['dependencies', 'java', 'logging', 'selenium', 'softicar', 'validation']
-}
